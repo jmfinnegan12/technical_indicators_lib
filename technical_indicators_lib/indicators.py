@@ -942,7 +942,7 @@ class FI:
         df["close_prev"] = df["close"].shift(1)
         df["FI"] = (df["close"] -
                     df["close_prev"]) * df["volume"]
-        df["FI"] = df["fi"].ewm(span=time_period).mean()
+        df["FI"] = df["FI"].ewm(span=time_period).mean()
         self.df = pd.DataFrame(None)
         df = df.drop(["close_prev"], axis=1)
         return df
