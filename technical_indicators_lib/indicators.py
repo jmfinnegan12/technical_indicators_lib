@@ -1398,11 +1398,11 @@ class MFI:
         Returns:
             pandas.DataFrame: new pandas dataframe adding MFI as a new column, preserving the columns which already exists\n
         """
-        self.df["TP"] = (df["low"] + df["high"] +
+        df["TP"] = (df["low"] + df["high"] +
                          df["close"]) / 3
-        self.df["TP_prev"] = self.df["TP"].shift(1)
-        self.df["PORN"] = np.zeros(len(df))
-        self.df.loc[self.df["TP"] > self.df["TP_prev"], "PORN"] = np.float(1)
+        df["TP_prev"] = df["TP"].shift(1)
+        df["PORN"] = np.zeros(len(df))
+        df.loc[self.df["TP"] > df["TP_prev"], "PORN"] = np.float(1)
         df["RMF"] = df["TP"] * df["volume"]
         df["NMF"], df["PMF"] = np.zeros(len(df)), np.zeros(len(df))
         df.loc[df["PORN"] == 0.0, "NMF"] = df["RMF"]
