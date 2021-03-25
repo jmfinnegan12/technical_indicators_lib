@@ -1994,7 +1994,7 @@ class PC:
             pandas.DataFrame: new pandas dataframe adding PC as new column, preserving the columns which already exists\n
         """
 
-        df["EMA_FOR_PC"] = df["close"].ewm(span=ema_period).mean()
+        df["EMA_FOR_PC"] = df["close"].ewm(span=time_period).mean()
 
         df["PC_upper"] = df["EMA_FOR_PC"] * (1 + (percent_value / 100))
         df["PC_lower"] = df["EMA_FOR_PC"] * (1 - (percent_value / 100))
