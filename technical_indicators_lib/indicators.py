@@ -3056,7 +3056,7 @@ class VO:
         return info
 
 
-    def get_value_df(self, df: pd.DataFrame, short_time_period: int = 9, long_time_period: int = 26):
+    def get_value_df(self, df: pd.DataFrame, short_ema: int = 9, long_ema: int = 26):
         """
         Get The expected indicator in a pandas dataframe.
 
